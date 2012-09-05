@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
 	    	} else if(i_tax.getCheckedRadioButtonId() == i_tax_cust.getId()) {
 	    		tax = Double.parseDouble(i_cust_tax.getText().toString());
 	    	} else {
-	    		// TODO: Handle error?
+	    		tax = 0;
 	    	}
 	    	
 	    	ticket = Double.parseDouble(i_ticket.getText().toString());
@@ -109,13 +109,14 @@ public class MainActivity extends Activity {
     	int amount = (int) Math.floor(money / buy_p);
     	
     	double expenditure = amount * buy_p - 2 * ticket;
-    	double revenue = amount * sell_p;
+    	double revenue_taxless = amount * sell_p;
+    	double revenue = amount * sell_p * (1 / (1 + tax / 100));
     	
     	double income = revenue - expenditure;
     	
     	return "You get: " 			+ amount 	+ " items\n" +
     		   "They cost (inc. travel): " + expenditure + "\n" +
-    		   "They sell for: " 	+ revenue 	+ "\n" +
+    		   "They sell for: " 	+ revenue_taxless    + "\n" +
     		   "Profit: " 			+ income;
     }
     
