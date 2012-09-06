@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
     	
     	int amount = (int) Math.floor(money / buy_p);
     	
-    	double expenditure = amount * buy_p - 2 * ticket;
+    	double expenditure = amount * buy_p + 2 * ticket;
     	double revenue_taxless = amount * sell_p;
     	double revenue = amount * sell_p * (1 / (1 + tax / 100));
     	
